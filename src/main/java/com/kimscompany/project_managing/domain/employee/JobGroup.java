@@ -1,5 +1,5 @@
 package com.kimscompany.project_managing.domain.employee;
 
-public enum EmployeeTeam {
+public enum JobGroup {
     Development, Marketing, Management, RD;
 }

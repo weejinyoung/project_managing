@@ -23,18 +23,12 @@ public class Project {
     @Column(name = "project_id")
     private Long id;
 
+    private String name;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
     @NotNull
     private Client client;
-
-    @OneToMany(mappedBy = "developer", cascade = CascadeType.ALL)
-    private List<InputDev> inputDevs = new ArrayList<>();
-
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
-    private List<Evaluation> evaluations = new ArrayList<>();
-
-    private String name;
 
     @Embedded
     @NotNull
@@ -43,6 +37,13 @@ public class Project {
     @Enumerated(EnumType.STRING)
     @NotNull
     private Status status;
+
+    @OneToMany(mappedBy = "developer", cascade = CascadeType.ALL)
+    private List<InputDev> inputDevs = new ArrayList<>();
+
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    private List<Evaluation> evaluations = new ArrayList<>();
+
 
     public static Project createProject(Client client, String name,
                                         Period projectPeriod) {

@@ -17,7 +17,6 @@ public class DeveloperService {
     public InputDev registerInputDev(InputDev inputDev) {
         return inputDevRepository.save(inputDev);
     }
-
     public DeveloperInfo registerDevInfo(DeveloperInfo devInfo) {
         return devInfoRepository.save(devInfo);
     }

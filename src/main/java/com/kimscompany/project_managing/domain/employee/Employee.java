@@ -3,9 +3,9 @@ package com.kimscompany.project_managing.domain.employee;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -21,23 +21,25 @@ public class Employee {
     private String name;
     private String socialId;
     private String education;
+    @NotBlank(message = "ID를 입력해주세요")
     private String webId;
+    @NotBlank(message = "Password를 입력해주세요")
     private String webPassword;
 
     @Enumerated(EnumType.STRING)
     @NotNull
-    private EmployeeTeam team;
+    private JobGroup jobGroup;
 
     public static Employee createEmployee(String name, String socialId,
                                           String education, String webId,
-                                          String webPassword, EmployeeTeam team) {
+                                          String webPassword, JobGroup jobGroup) {
         Employee employee = new Employee();
         employee.setName(name);
         employee.setSocialId(socialId);
         employee.setEducation(education);
         employee.setWebId(webId);
         employee.setWebPassword(webPassword);
-        employee.setTeam(team);
+        employee.setJobGroup(jobGroup);
         return employee;
     }
 }
